@@ -1,9 +1,39 @@
 $red: rgba(255, 0, 0, 1);
-
+$badass: #bada55;
 h1 {
-    color: $red
+    color: $badass;
 }
 
 .container {
     text-align: center;
+}
+
+.laskuri {
+    margin-top: 20px;
+    padding: 20px 10px;
+    button {
+        margin-left: 20px;
+        border: 0;
+        background-color: $badass;
+        padding: 10px;
+
+        &:hover {
+            background-color: #daba55;
+        }
+        &:active {
+            background-color: #dabadd;
+            color: #f00;
+        }
+    }
+}
+
+.megalaskuri {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    background-color: $badass;
+    padding: 5%;
+    font-size: 7em;
+    color: #b9d755;
 }
