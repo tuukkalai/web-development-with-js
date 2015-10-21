@@ -3,17 +3,12 @@ import './client.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { Router, Route, Link, IndexRoute } from 'react-router';
 
+import HelloWorldApp from './components/HelloWorldApp';
+import Greeter from './components/Greeter';
+import Index from './components/Index';
 
-function getTussit(){
-    return axios.get('/api/tussi').then((response) => {
-        return response.data;
-    });
-}
-//console.log(getTussit());
-//const tussit = getTussit();
-//tussit.then((data) => console.log(data));
 
 // ----------- FUNKTIONAALISEN OHJELMOINNIN TESTAAMISTA ----------------
 // map palauttaa yhtä monta tulosta kuin sille annetaan muuttujia
@@ -28,8 +23,8 @@ const perhe = laihdutetut.reduce((r, loso) => {
     return r + loso;
 }, '');
 
-console.log(losot);
-console.log(laihdutetut);
+//console.log(losot);
+//console.log(laihdutetut);
 //console.log(perhe);
 
 // Parempi esimerkki reducen käytöstä
@@ -39,97 +34,23 @@ const keskiarvo = luvut.reduce((r, num) => {
 }, 0) / luvut.length;
 
 //console.log(keskiarvo);
-// ----------- FUNKTIONAALISEN OHJELMOINNI TESTAUS LOPPUU --------------
+// ----------- FUNKTIONAALISEN OHJELMOINNIN TESTAUS LOPPUU --------------
 
 //console.log('kvaak sanoo ankka!');
 //console.log('ankka sanoo ankka!');
 
-const HelloWorld = React.createClass({
-    render: function() {
-        return (
-            <div>
-                Hello { this.props.name }
-            </div>
-        );
-    }
-});
 
-const Counterizer = React.createClass({
+const routes = (
+    <Router>
+        <Route path="/" component={HelloWorldApp}>
+            <IndexRoute component={Index} />
+            <Route path="/hello/:name" component={Greeter}></Route>
+        </Route>
+    </Router>
+);
 
-    render: function() {
-        const { count, name, onIncrementCounter } = this.props;
-        /*const count = this.props.count;
-        const name = this.props.name;
-        const onIncrementCounter = this.props.onIncrementCounter;*/
-        return (
-            <div className="laskuri">
-                {count}
-                {name}
-
-                <button onClick={onIncrementCounter}>Lisää</button>
-            </div>
-        );
-    }
-});
-
-class Counter extends React.Component {
-    render() {
-        return (
-            <div className="megalaskuri">
-                {this.props.count}
-            </div>
-        );
-    }
-};
-
-
-
-const HelloWorldApp = React.createClass({
-    getInitialState: function() {
-        return {
-            count: 0,
-            name: 'naame',
-            names: []
-        };
-    },
-    componentDidMount: function(){
-        getTussit().then((data) => {
-            this.setState({
-                names: data
-            });
-        });
-    },
-    render: function() {
-        const names = this.state.names;
-        return (
-            <div>
-                <h1>Mundo</h1>
-                { names.map((name, key) => {
-                    return <HelloWorld key={key} name={name} />
-                })}
-
-                <Counterizer {...this.state} onIncrementCounter={this.incrementCounter} />
-                <Counter count={this.state.count} />
-            </div>
-        );
-    },
-    incrementCounter: function(){
-        this.setState({
-            count: this.state.count + 1
-        });
-    }
-});
-//Läskinuoli on sama kuin tämä
-//                { names.map(function(name){
-//                    return <HelloWorld name={name} />
-//                })}
-
-// -------- STATE ----------
-//
-// <Counterizer count={this.state.count} onIncrementCounter={this.onIncrementCounter} />
-// <Counterizer {...this.state} onIncrementCounter={this.incrementCounter} />
 
 ReactDOM.render(
-    <HelloWorldApp />,
+    routes,
     document.getElementById('app')
 );
