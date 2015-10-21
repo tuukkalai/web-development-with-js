@@ -4,6 +4,7 @@ import './client.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
+import { createHistory } from 'history';
 
 import HelloWorldApp from './components/HelloWorldApp';
 import Greeter from './components/Greeter';
@@ -39,9 +40,10 @@ const keskiarvo = luvut.reduce((r, num) => {
 //console.log('kvaak sanoo ankka!');
 //console.log('ankka sanoo ankka!');
 
+let history = createHistory();
 
 const routes = (
-    <Router>
+    <Router history={history}>
         <Route path="/" component={HelloWorldApp}>
             <IndexRoute component={Index} />
             <Route path="/hello/:name" component={Greeter}></Route>

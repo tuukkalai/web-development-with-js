@@ -1,18 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-//import Counterizer from './Counterizer';
-//import Counter from './Counter';
-//import HelloWorld from './HelloWorld';
-
-
-function getTussit(){
-    return axios.get('/api/tussi').then((response) => {
-        return response.data;
-    });
-}
-//console.log(getTussit());
-//const tussit = getTussit();
-//tussit.then((data) => console.log(data));
+import api from '../api.js';
 
 const HelloWorldApp = React.createClass({
     getInitialState: function() {
@@ -23,7 +10,7 @@ const HelloWorldApp = React.createClass({
         };
     },
     componentDidMount: function(){
-        getTussit().then((data) => {
+        api.getTussit().then((data) => {
             this.setState({
                 names: data
             });

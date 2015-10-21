@@ -10,7 +10,6 @@ const Greeter = React.createClass({
             <h1>
                 Hello {name}
             </h1>
-            //<button onClick={history.back}>Takaisin</button>
         );
     }
 });

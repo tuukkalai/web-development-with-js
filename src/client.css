@@ -1,5 +1,16 @@
 $red: rgba(255, 0, 0, 1);
 $badass: #bada55;
+body {
+    background-color: #ddd;
+}
+#app {
+    width: 960px;
+    height: auto;
+    margin: 10px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 1px 1px 7px #888888;
+}
 h1 {
     color: $badass;
 }
