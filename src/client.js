@@ -9,6 +9,7 @@ import { createHistory } from 'history';
 import HelloWorldApp from './components/HelloWorldApp';
 import Greeter from './components/Greeter';
 import Index from './components/Index';
+import SimpleMap from './components/SimpleMap';
 
 
 // ----------- FUNKTIONAALISEN OHJELMOINNIN TESTAAMISTA ----------------
@@ -47,6 +48,7 @@ const routes = (
         <Route path="/" component={HelloWorldApp}>
             <IndexRoute component={Index} />
             <Route path="/hello/:name" component={Greeter}></Route>
+            <Route path="/kartta" component={SimpleMap}></Route>
         </Route>
     </Router>
 );
