@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { GoogleMap, Marker, InfoWindow, Circle } from 'react-google-maps';
 import canUseDOM from 'can-use-dom';
 import raf from 'raf';
+import { default as I, List, Map, Range, Repeat } from 'immutable';
 
 const geolocation = (
   canUseDOM && navigator.geolocation || {
@@ -28,7 +29,7 @@ export default class SimpleMap extends React.Component{
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 },
-                content: "Location found."
+                //content: "Location found."
             });
 
             const tick = () => {
@@ -75,7 +76,9 @@ export default class SimpleMap extends React.Component{
             ]);
         }
 
-        console.log(...this.props);
+        const ret = Map(contents);
+
+        console.log(ret);
 
         return (
             <GoogleMap containerProps={{
