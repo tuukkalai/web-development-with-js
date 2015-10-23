@@ -50,6 +50,7 @@
     "postcss-loader": "^0.6.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.0.1",
+    "raf": "^3.1.0",
     "react": "^0.14.0",
     "react-document-title": "^2.0.1",
     "react-dom": "^0.14.0",
